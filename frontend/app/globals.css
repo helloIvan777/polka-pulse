@@ -2,29 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body {
-  scroll-behavior: smooth;
+/* 1. Базовая настройка темы Polkadot Dark */
+@layer base {
+  :root {
+    --background: 0 0% 2%;    /* Почти черный #050505 */
+    --foreground: 0 0% 100%;  /* Чистый белый */
+
+    --card: 0 0% 4%;          /* Карточки чуть светлее #0A0A0A */
+    --card-foreground: 0 0% 100%;
+
+    /* Розовый цвет Polkadot (#E6007A) */
+    --primary: 330 100% 45%; 
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 330 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 240 4% 16%;
+    --input: 240 4% 16%;
+    --ring: 330 100% 45%;
+  }
 }
 
-body {
-  background-color: #050505;
+/* 2. Принудительные стили для чистого отображения */
+@layer base {
+  * {
+    @apply border-border;
+    /* Убираем глобальный !important white, чтобы кнопки могли иметь свои цвета */
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    background-color: #050505 !important; /* Гарантируем черный фон */
+    color: white !important;               /* Гарантируем белый текст по умолчанию */
+  }
+
+  /* Исправляем видимость инпутов и текстовых зон */
+  input, textarea {
+    background-color: #111 !important;
+    color: white !important;
+    border: 1px solid #222 !important;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #666 !important;
+  }
 }
 
-.scrollbar-thin {
-  scrollbar-width: thin;
+/* 3. Кастомный скроллбар (Розовый, в стиле бренда) */
+::-webkit-scrollbar {
+  width: 5px;
 }
 
-.scrollbar-thin::-webkit-scrollbar {
-  width: 6px;
+::-webkit-scrollbar-track {
+  background: #050505;
 }
 
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: transparent;
+::-webkit-scrollbar-thumb {
+  background: #E6007A;
+  border-radius: 10px;
 }
 
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: rgba(30, 64, 175, 0.7);
-  border-radius: 999px;
+/* 4. Анимация пульсации для логотипа */
+@keyframes pulse-pink {
+  0% { box-shadow: 0 0 0 0 rgba(230, 0, 122, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(230, 0, 122, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(230, 0, 122, 0); }
 }
 
+.logo-pulse {
+  animation: pulse-pink 2s infinite;
+}
