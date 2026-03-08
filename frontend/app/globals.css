@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #050505 !important;
+  color: white !important;
+  font-family: sans-serif !important;
+}
+
 /* 1. Базовая настройка темы Polkadot Dark */
 @layer base {
   :root {

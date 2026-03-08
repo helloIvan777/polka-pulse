@@ -3,32 +3,46 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   darkMode: ["class"],
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}"
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./context/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}", // на всякий случай
   ],
   theme: {
     extend: {
       colors: {
-        background: "#020817",
-        foreground: "#e5e7eb",
-        muted: {
-          DEFAULT: "#020617",
-          foreground: "#64748b"
-        },
-        border: "#1f2937",
+        // Глубокий черный фон для Web3 консоли
+        background: "#050505",
+        foreground: "#FFFFFF",
+        // Официальный Розовый Polkadot
         primary: {
-          DEFAULT: "#38bdf8",
-          foreground: "#0b1120"
+          DEFAULT: "#E6007A",
+          foreground: "#FFFFFF",
         },
+        // Антрацитовый для карточек
+        secondary: {
+          DEFAULT: "#0A0A0A",
+          foreground: "#FFFFFF",
+        },
+        muted: {
+          DEFAULT: "#111111",
+          foreground: "#A1A1AA",
+        },
+        border: "rgba(255, 255, 255, 0.1)",
         accent: {
-          DEFAULT: "#4f46e5",
-          foreground: "#e5e7eb"
-        }
+          DEFAULT: "#E6007A",
+          foreground: "#FFFFFF",
+        },
       },
       borderRadius: {
-        lg: "0.75rem",
-        md: "0.5rem",
-        sm: "0.375rem"
+        lg: "1rem",
+        md: "0.75rem",
+        sm: "0.5rem",
+      },
+      // Добавим эффект свечения для "Пульса"
+      boxShadow: {
+        'pulse-pink': '0 0 20px rgba(230, 0, 122, 0.2)',
       }
     }
   },
@@ -36,4 +50,3 @@ const config: Config = {
 };
 
 export default config;
-
